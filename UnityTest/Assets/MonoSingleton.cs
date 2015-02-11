@@ -8,10 +8,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
 	public static T Instance {
 		get {
 			_instance = _instance ?? (FindObjectOfType (typeof(T)) as T);
-			if (_instance == null) {
-				_instance = new GameObject (typeof(T).ToString (), typeof(T)).GetComponent<T> ();
-				DontDestroyOnLoad (_instance);
-			}
+			_instance = _instance ?? new GameObject(typeof(T).ToString (), typeof(T)).GetComponent<T> ();
 			return _instance;
 		}
 	}
