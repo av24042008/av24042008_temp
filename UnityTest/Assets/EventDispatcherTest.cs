@@ -6,8 +6,8 @@ public class EventDispatcherTest : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		EventDispatcher.Instance.AddEventListener ("SayHello", HelloWorld);
-		EventDispatcher.Instance.DispatchEvent ("SayHello");
+		EventDispatcher.Instance.AddEventListener("SayHello", HelloWorld);
+		EventDispatcher.Instance.DispatchEvent("SayHello");
 	}
 	
 	// Update is called once per frame
@@ -18,6 +18,6 @@ public class EventDispatcherTest : MonoBehaviour {
 
 	public void HelloWorld ()
 	{
-		Debug.Log ("Hello World");
+		Debug.Log("Hello World");
 	}
 }
