@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EventDispatcher : MonoSingleton<EventDispatcher>
 {
-	public delegate void Listener();
+	public delegate void Listener(object target);
 	private Dictionary<string, Listener> _listeners = new Dictionary<string, Listener>();
 
 	public void AddEventListener (string eventName, Listener listener)
@@ -26,14 +26,10 @@ public class EventDispatcher : MonoSingleton<EventDispatcher>
 		}
 	}
 
-	public void DispatchEvent (string eventName)
+	public void DispatchEvent (string eventName, object target = null)
 	{
 		if (_listeners.ContainsKey(eventName)) {
-			if (_listeners[eventName] == null) {
-				_listeners.Remove(eventName);
-			} else {
-				_listeners[eventName]();
-			}
+			_listeners[eventName](target);
 		}
 	}
 }
