@@ -29,7 +29,11 @@ public class EventDispatcher : MonoSingleton<EventDispatcher>
 	public void DispatchEvent (string eventName)
 	{
 		if (_listeners.ContainsKey(eventName)) {
-			_listeners[eventName]();
+			if (_listeners[eventName] == null) {
+				_listeners.Remove(eventName);
+			} else {
+				_listeners[eventName]();
+			}
 		}
 	}
 }
